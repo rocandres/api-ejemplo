@@ -1,0 +1,23 @@
+plans/1-login-registro-usuarios-jwt.md
+  s_9b57cf8e21c234::t_b0c7381fbb91f9 59,111
+src/utils/validar_usuario.js
+  s_9b57cf8e21c234::t_d4e68b388f18d2 1-50
+tests/validar_usuario.test.js
+  s_9b57cf8e21c234::t_6ca68728ad944b 1-75
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "fc77cada8b7041089212733fd8d3c40b4752b593",
+  "prompts": {},
+  "sessions": {
+    "s_9b57cf8e21c234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e4c24fb-ffdb-49bc-8546-f728e8aa6ab0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
