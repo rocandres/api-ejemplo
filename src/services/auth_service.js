@@ -1,7 +1,7 @@
 const usuarios_repository = require('../repositories/usuarios_repository')
 const { row_to_usuario } = require('../models/usuario')
-const { validar_registro } = require('../utils/validar_usuario')
-const { hash_password } = require('../utils/password')
+const { validar_registro, validar_login } = require('../utils/validar_usuario')
+const { hash_password, verificar_password } = require('../utils/password')
 const { firmar_token } = require('../utils/jwt')
 
 const ROL_POR_DEFECTO = 'usuario-free'
@@ -29,4 +29,15 @@ const registrar_usuario = (datos) => {
   return respuesta_con_token(row)
 }
 
-module.exports = { registrar_usuario }
+const login = (datos) => {
+  const errores = validar_login(datos)
+  if (errores.length) return { errores }
+
+  const row = usuarios_repository.find_by_email(normalizar_email(datos.email))
+  if (!row || !verificar_password(datos.password, row.password_hash)) {
+    return { no_autorizado: true }
+  }
+  return respuesta_con_token(row)
+}
+
+module.exports = { registrar_usuario, login }

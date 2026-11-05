@@ -43,3 +43,31 @@ describe('auth_service.registrar_usuario', () => {
     })
   })
 })
+
+describe('auth_service.login', () => {
+  auth_service.registrar_usuario(datos({ email: 'login@x.com', rol: 'usuario' }))
+
+  it('devuelve errores si faltan email o contraseña', () => {
+    expect(auth_service.login({})).toEqual({
+      errores: ['email es obligatorio', 'password es obligatoria'],
+    })
+  })
+
+  it('devuelve token y usuario con credenciales correctas (email sin normalizar)', () => {
+    const { token, usuario } = auth_service.login({ email: ' LOGIN@x.com', password: 'secreto123' })
+    expect(usuario).toMatchObject({ email: 'login@x.com', rol: 'usuario' })
+    expect(verificar_token(token)).toMatchObject({ sub: String(usuario.id), rol: 'usuario' })
+  })
+
+  it('rechaza una contraseña incorrecta', () => {
+    expect(auth_service.login({ email: 'login@x.com', password: 'otra1234' })).toEqual({
+      no_autorizado: true,
+    })
+  })
+
+  it('rechaza un email inexistente', () => {
+    expect(auth_service.login({ email: 'nadie@x.com', password: 'secreto123' })).toEqual({
+      no_autorizado: true,
+    })
+  })
+})
