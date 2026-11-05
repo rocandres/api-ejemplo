@@ -56,7 +56,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T4.** Crear el repositorio con `create`, `find_by_email`, `find_by_id` — `src/repositories/usuarios_repository.js`
 - [x] **T5.** Implementar `hash_password` (scrypt con salt aleatorio, guardado como `salt:hash`) y `verificar_password` con `timingSafeEqual` — `src/utils/password.js`
 - [x] **T6.** Implementar `firmar_token(usuario)` (payload `{ sub, email, rol }`, `expiresIn: '24h'`) y `verificar_token`; lanzar error al cargar si falta `JWT_SECRET` — `src/utils/jwt.js`
-- [ ] **T7.** Implementar `validar_registro` (nombre no vacío, email con formato válido, contraseña de 8 a 128 caracteres con al menos una letra y un número, `rol` opcional y, si viene, en `ROLES_REGISTRO = ['usuario-free', 'usuario']`) y `validar_login` (email y contraseña presentes), acumulando errores — `src/utils/validar_usuario.js`
+- [x] **T7.** Implementar `validar_registro` (nombre no vacío, email con formato válido, contraseña de 8 a 128 caracteres con al menos una letra y un número, `rol` opcional y, si viene, en `ROLES_REGISTRO = ['usuario-free', 'usuario']`) y `validar_login` (email y contraseña presentes), acumulando errores — `src/utils/validar_usuario.js`
 - [ ] **T8.** Implementar `registrar_usuario`: validar, normalizar email (trim + minúsculas), aplicar rol por defecto `usuario-free`, comprobar duplicado (`conflicto`), hashear, crear y devolver `{ token, usuario }` — `src/services/auth_service.js`
 - [ ] **T9.** Implementar `login`: validar, buscar por email, verificar contraseña y devolver `{ token, usuario }` o `no_autorizado` — `src/services/auth_service.js`
 - [ ] **T10.** Crear `registro` (400/409/201) y `login` (400/401/200) en el controlador — `src/controllers/auth_controller.js`
@@ -108,3 +108,4 @@ La tarea se da por terminada cuando se cumplen todos:
 - Tests unitarios por capa en archivos propios (`tests/db.test.js`, `tests/password.test.js`, `tests/jwt.test.js`, ...) además de los de integración en `tests/auth.test.js` — cada tarea tiene su test en rojo antes del código; vitest aísla cada archivo, así que cada uno tiene su propia BD `:memory:`.
 - `src/db.js` pasa al estilo del proyecto (sin `;`) al modificarlo, y extrae `lista_sql` para generar los `CHECK` de categorías y roles.
 - `sub` del JWT se guarda como string (`String(id)`) — la especificación JWT (RFC 7519) define `sub` como cadena.
+- `ROLES_REGISTRO` se deriva de `ROLES` quitando `admin` — mantiene `ROLES` como fuente única de verdad. Email validado con una expresión simple (`algo@dominio.ext`, sin espacios).
