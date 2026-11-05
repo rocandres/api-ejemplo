@@ -1,0 +1,23 @@
+package-lock.json
+  s_9b57cf8e21c234::t_83946b758b3866 12-13,16-421,457-480,554-559,598-607,633-655,692-698,708-717,737-758,773-781,819-825,838-853,860-869,879-888,935-941,973-1007,1134-1149,1258-1633,1727-1746,1832-1845,1862-1871,1887-1894,1908-1937,2015-2049,2224-2234,2244-2334,2348-2415,2494-2702
+package.json
+  s_9b57cf8e21c234::t_1b1ad6438a3604 10,16-17,20-22
+plans/1-login-registro-usuarios-jwt.md
+  s_9b57cf8e21c234::t_4ce58ba31f9745 1-106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "9be1674a6dfbecf60bdb3b077840c539c9fdcb32",
+  "prompts": {},
+  "sessions": {
+    "s_9b57cf8e21c234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e4c24fb-ffdb-49bc-8546-f728e8aa6ab0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
