@@ -51,7 +51,7 @@ Permitir que los usuarios se registren (nombre, email, contraseña y rol) y obte
 Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 
 - [x] **T1.** Instalar `jsonwebtoken` y en dev `vitest` y `supertest`; cambiar el script `test` a `vitest run` — `package.json`
-- [ ] **T2.** Añadir `ROLES` y la tabla `usuarios` (`id`, `nombre`, `email TEXT NOT NULL UNIQUE`, `password_hash`, `rol` con `CHECK`, `created_at DEFAULT CURRENT_TIMESTAMP`) — `src/db.js`
+- [x] **T2.** Añadir `ROLES` y la tabla `usuarios` (`id`, `nombre`, `email TEXT NOT NULL UNIQUE`, `password_hash`, `rol` con `CHECK`, `created_at DEFAULT CURRENT_TIMESTAMP`) — `src/db.js`
 - [ ] **T3.** Crear `row_to_usuario` que devuelve `{ id, nombre, email, rol, createdAt }` — `src/models/usuario.js`
 - [ ] **T4.** Crear el repositorio con `create`, `find_by_email`, `find_by_id` — `src/repositories/usuarios_repository.js`
 - [ ] **T5.** Implementar `hash_password` (scrypt con salt aleatorio, guardado como `salt:hash`) y `verificar_password` con `timingSafeEqual` — `src/utils/password.js`
@@ -104,3 +104,6 @@ La tarea se da por terminada cuando se cumplen todos:
 - Mismo mensaje de error para email inexistente y contraseña incorrecta — no revela qué emails están registrados.
 - Columna `password_hash` y campo `password` en el payload — el nombre de la columna deja claro que no es texto plano.
 - Middleware de autenticación fuera de alcance — no se ha pedido proteger rutas; se recomienda como siguiente issue.
+- `vitest.config.js` (T12) se crea junto con T2 — sin framework de tests configurado no se puede hacer TDD de las tareas anteriores; T12 se marca al verificarla.
+- Tests unitarios por capa en archivos propios (`tests/db.test.js`, `tests/password.test.js`, `tests/jwt.test.js`, ...) además de los de integración en `tests/auth.test.js` — cada tarea tiene su test en rojo antes del código; vitest aísla cada archivo, así que cada uno tiene su propia BD `:memory:`.
+- `src/db.js` pasa al estilo del proyecto (sin `;`) al modificarlo, y extrae `lista_sql` para generar los `CHECK` de categorías y roles.
