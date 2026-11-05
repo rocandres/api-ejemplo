@@ -65,7 +65,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T13.** Tests de registro: caso feliz con token, rol por defecto, rechazo de `rol: 'admin'`, validaciones de contraseña, email duplicado, la respuesta no contiene contraseña — `tests/auth.test.js`
 - [x] **T14.** Tests de login: caso feliz (token decodificable con `rol` y `exp - iat = 86400`), contraseña incorrecta, email inexistente — `tests/auth.test.js`
 - [x] **T15.** Crear `scripts/crear_admin.js` (lee `ADMIN_NOMBRE`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, reutiliza `hash_password` y el repositorio, falla si faltan variables o el email existe) y el script `crear-admin` — `scripts/crear_admin.js`, `package.json`
-- [ ] **T16.** Documentar `JWT_SECRET`, endpoints, `crear-admin` y `npm test` — `CLAUDE.md`
+- [x] **T16.** Documentar `JWT_SECRET`, endpoints, `crear-admin` y `npm test` — `CLAUDE.md`
 
 ## Criterios de aceptación
 
