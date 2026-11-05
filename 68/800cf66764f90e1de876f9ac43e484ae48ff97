@@ -1,0 +1,31 @@
+.claude/skills/implement-plan/SKILL.md
+  s_b7855c74ac856b::t_d006597e4268b9 1-76
+.claude/skills/plan-feature/SKILL.md
+  s_8094e863acdc2f::t_b28dd1852499ad 1-41
+.claude/skills/plan-feature/assets/plantilla-plan.md
+  s_8094e863acdc2f::t_f790a15d57e6ac 1-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "68800cf66764f90e1de876f9ac43e484ae48ff97",
+  "prompts": {},
+  "sessions": {
+    "s_8094e863acdc2f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8f09de9e-2ee4-4563-8c4f-193dec206564",
+        "model": "unknown"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    },
+    "s_b7855c74ac856b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "9fcf9dbd-fdc1-481c-8b3a-05f84c9eed45",
+        "model": "unknown"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
