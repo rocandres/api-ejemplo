@@ -54,7 +54,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T2.** Añadir `ROLES` y la tabla `usuarios` (`id`, `nombre`, `email TEXT NOT NULL UNIQUE`, `password_hash`, `rol` con `CHECK`, `created_at DEFAULT CURRENT_TIMESTAMP`) — `src/db.js`
 - [x] **T3.** Crear `row_to_usuario` que devuelve `{ id, nombre, email, rol, createdAt }` — `src/models/usuario.js`
 - [x] **T4.** Crear el repositorio con `create`, `find_by_email`, `find_by_id` — `src/repositories/usuarios_repository.js`
-- [ ] **T5.** Implementar `hash_password` (scrypt con salt aleatorio, guardado como `salt:hash`) y `verificar_password` con `timingSafeEqual` — `src/utils/password.js`
+- [x] **T5.** Implementar `hash_password` (scrypt con salt aleatorio, guardado como `salt:hash`) y `verificar_password` con `timingSafeEqual` — `src/utils/password.js`
 - [ ] **T6.** Implementar `firmar_token(usuario)` (payload `{ sub, email, rol }`, `expiresIn: '24h'`) y `verificar_token`; lanzar error al cargar si falta `JWT_SECRET` — `src/utils/jwt.js`
 - [ ] **T7.** Implementar `validar_registro` (nombre no vacío, email con formato válido, contraseña de 8 a 128 caracteres con al menos una letra y un número, `rol` opcional y, si viene, en `ROLES_REGISTRO = ['usuario-free', 'usuario']`) y `validar_login` (email y contraseña presentes), acumulando errores — `src/utils/validar_usuario.js`
 - [ ] **T8.** Implementar `registrar_usuario`: validar, normalizar email (trim + minúsculas), aplicar rol por defecto `usuario-free`, comprobar duplicado (`conflicto`), hashear, crear y devolver `{ token, usuario }` — `src/services/auth_service.js`
