@@ -64,7 +64,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T12.** Configurar vitest (`env: { DB_PATH: ':memory:', JWT_SECRET: 'test' }`) — `vitest.config.js`
 - [x] **T13.** Tests de registro: caso feliz con token, rol por defecto, rechazo de `rol: 'admin'`, validaciones de contraseña, email duplicado, la respuesta no contiene contraseña — `tests/auth.test.js`
 - [x] **T14.** Tests de login: caso feliz (token decodificable con `rol` y `exp - iat = 86400`), contraseña incorrecta, email inexistente — `tests/auth.test.js`
-- [ ] **T15.** Crear `scripts/crear_admin.js` (lee `ADMIN_NOMBRE`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, reutiliza `hash_password` y el repositorio, falla si faltan variables o el email existe) y el script `crear-admin` — `scripts/crear_admin.js`, `package.json`
+- [x] **T15.** Crear `scripts/crear_admin.js` (lee `ADMIN_NOMBRE`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, reutiliza `hash_password` y el repositorio, falla si faltan variables o el email existe) y el script `crear-admin` — `scripts/crear_admin.js`, `package.json`
 - [ ] **T16.** Documentar `JWT_SECRET`, endpoints, `crear-admin` y `npm test` — `CLAUDE.md`
 
 ## Criterios de aceptación
@@ -110,3 +110,4 @@ La tarea se da por terminada cuando se cumplen todos:
 - `sub` del JWT se guarda como string (`String(id)`) — la especificación JWT (RFC 7519) define `sub` como cadena.
 - `ROLES_REGISTRO` se deriva de `ROLES` quitando `admin` — mantiene `ROLES` como fuente única de verdad. Email validado con una expresión simple (`algo@dominio.ext`, sin espacios).
 - En `tests/auth.test.js` la BD se carga con `createRequire` (require nativo) — un `import` ESM desde vitest crea otra instancia de `src/db.js` (y otra BD `:memory:`) distinta de la que usa la app CommonJS.
+- La lógica de `crear-admin` vive en `auth_service.crear_admin` (comparte `crear_usuario` con el registro: misma validación de nombre/email/password, normalización de email y detección de duplicados); el script solo lee las variables de entorno y muestra el resultado. Como `auth_service` carga `utils/jwt`, el script pone un `JWT_SECRET` provisional si no está definido (no firma tokens).

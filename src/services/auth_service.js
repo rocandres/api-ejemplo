@@ -13,10 +13,7 @@ const respuesta_con_token = (row) => {
   return { token: firmar_token(usuario), usuario }
 }
 
-const registrar_usuario = (datos) => {
-  const errores = validar_registro(datos)
-  if (errores.length) return { errores }
-
+const crear_usuario = (datos, rol) => {
   const email = normalizar_email(datos.email)
   if (usuarios_repository.find_by_email(email)) return { conflicto: true }
 
@@ -24,8 +21,17 @@ const registrar_usuario = (datos) => {
     nombre: datos.nombre.trim(),
     email,
     password_hash: hash_password(datos.password),
-    rol: datos.rol ?? ROL_POR_DEFECTO,
+    rol,
   })
+  return { row }
+}
+
+const registrar_usuario = (datos) => {
+  const errores = validar_registro(datos)
+  if (errores.length) return { errores }
+
+  const { conflicto, row } = crear_usuario(datos, datos.rol ?? ROL_POR_DEFECTO)
+  if (conflicto) return { conflicto }
   return respuesta_con_token(row)
 }
 
@@ -40,4 +46,13 @@ const login = (datos) => {
   return respuesta_con_token(row)
 }
 
-module.exports = { registrar_usuario, login }
+const crear_admin = ({ nombre, email, password }) => {
+  const errores = validar_registro({ nombre, email, password })
+  if (errores.length) return { errores }
+
+  const { conflicto, row } = crear_usuario({ nombre, email, password }, 'admin')
+  if (conflicto) return { conflicto }
+  return { usuario: row_to_usuario(row) }
+}
+
+module.exports = { registrar_usuario, login, crear_admin }
