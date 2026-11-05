@@ -60,7 +60,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T8.** Implementar `registrar_usuario`: validar, normalizar email (trim + minúsculas), aplicar rol por defecto `usuario-free`, comprobar duplicado (`conflicto`), hashear, crear y devolver `{ token, usuario }` — `src/services/auth_service.js`
 - [x] **T9.** Implementar `login`: validar, buscar por email, verificar contraseña y devolver `{ token, usuario }` o `no_autorizado` — `src/services/auth_service.js`
 - [x] **T10.** Crear `registro` (400/409/201) y `login` (400/401/200) en el controlador — `src/controllers/auth_controller.js`
-- [ ] **T11.** Crear el router y montarlo en `/auth` — `src/routes/auth.js`, `src/app.js`
+- [x] **T11.** Crear el router y montarlo en `/auth` — `src/routes/auth.js`, `src/app.js`
 - [ ] **T12.** Configurar vitest (`env: { DB_PATH: ':memory:', JWT_SECRET: 'test' }`) — `vitest.config.js`
 - [ ] **T13.** Tests de registro: caso feliz con token, rol por defecto, rechazo de `rol: 'admin'`, validaciones de contraseña, email duplicado, la respuesta no contiene contraseña — `tests/auth.test.js`
 - [ ] **T14.** Tests de login: caso feliz (token decodificable con `rol` y `exp - iat = 86400`), contraseña incorrecta, email inexistente — `tests/auth.test.js`
@@ -106,6 +106,6 @@ La tarea se da por terminada cuando se cumplen todos:
 - Middleware de autenticación fuera de alcance — no se ha pedido proteger rutas; se recomienda como siguiente issue.
 - `vitest.config.js` (T12) se crea junto con T2 — sin framework de tests configurado no se puede hacer TDD de las tareas anteriores; T12 se marca al verificarla.
 - Tests unitarios por capa en archivos propios (`tests/db.test.js`, `tests/password.test.js`, `tests/jwt.test.js`, ...) además de los de integración en `tests/auth.test.js` — cada tarea tiene su test en rojo antes del código; vitest aísla cada archivo, así que cada uno tiene su propia BD `:memory:`.
-- `src/db.js` pasa al estilo del proyecto (sin `;`) al modificarlo, y extrae `lista_sql` para generar los `CHECK` de categorías y roles.
+- `src/db.js` y `src/app.js` pasan al estilo del proyecto (sin `;`) al modificarlos; `db.js` además extrae `lista_sql` para generar los `CHECK` de categorías y roles.
 - `sub` del JWT se guarda como string (`String(id)`) — la especificación JWT (RFC 7519) define `sub` como cadena.
 - `ROLES_REGISTRO` se deriva de `ROLES` quitando `admin` — mantiene `ROLES` como fuente única de verdad. Email validado con una expresión simple (`algo@dominio.ext`, sin espacios).
