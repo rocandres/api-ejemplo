@@ -71,20 +71,20 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 
 La tarea se da por terminada cuando se cumplen todos:
 
-- [ ] `POST /auth/registro` con `{ nombre, email, password, rol }` válidos devuelve `201` y `{ token, usuario: { id, nombre, email, rol, createdAt } }`, sin `password` ni `passwordHash`; el token es válido igual que el del login.
-- [ ] `POST /auth/registro` sin `rol` crea el usuario con `rol: 'usuario-free'`.
-- [ ] `POST /auth/registro` con `rol: 'admin'` devuelve `400` con `'rol debe ser uno de: usuario-free, usuario'` y no crea el usuario.
-- [ ] `POST /auth/registro` con contraseña sin números o sin letras devuelve `400` con `'password debe contener al menos una letra y un número'`.
-- [ ] `ADMIN_NOMBRE=... ADMIN_EMAIL=... ADMIN_PASSWORD=... npm run crear-admin` crea un usuario con `rol: 'admin'` que puede hacer login.
-- [ ] En la base de datos la contraseña se guarda hasheada (el valor de `password_hash` es distinto de la contraseña enviada y dos usuarios con la misma contraseña tienen hashes distintos).
-- [ ] `POST /auth/registro` con datos inválidos devuelve `400 { errores: [...] }` con todos los errores a la vez (p. ej. `'email no es válido'`, `'password debe tener entre 8 y 128 caracteres'`).
-- [ ] `POST /auth/registro` con un email ya registrado (sin distinguir mayúsculas) devuelve `409 { error: 'El email ya está registrado' }`.
-- [ ] `POST /auth/login` con credenciales correctas devuelve `200 { token, usuario }`; el token verifica con `JWT_SECRET`, contiene `sub`, `email`, `rol` y caduca a las 24 h (`exp - iat === 86400`).
-- [ ] `POST /auth/login` con email inexistente o contraseña incorrecta devuelve `401 { error: 'Credenciales inválidas' }` (mismo mensaje en ambos casos).
-- [ ] `POST /auth/login` sin email o sin contraseña devuelve `400 { errores: [...] }`.
-- [ ] La API no arranca si no está definido `JWT_SECRET`.
-- [ ] `npm test` ejecuta vitest y todos los tests de `tests/auth.test.js` pasan.
-- [ ] Las rutas de `/vendehumos` siguen funcionando igual.
+- [x] `POST /auth/registro` con `{ nombre, email, password, rol }` válidos devuelve `201` y `{ token, usuario: { id, nombre, email, rol, createdAt } }`, sin `password` ni `passwordHash`; el token es válido igual que el del login.
+- [x] `POST /auth/registro` sin `rol` crea el usuario con `rol: 'usuario-free'`.
+- [x] `POST /auth/registro` con `rol: 'admin'` devuelve `400` con `'rol debe ser uno de: usuario-free, usuario'` y no crea el usuario.
+- [x] `POST /auth/registro` con contraseña sin números o sin letras devuelve `400` con `'password debe contener al menos una letra y un número'`.
+- [x] `ADMIN_NOMBRE=... ADMIN_EMAIL=... ADMIN_PASSWORD=... npm run crear-admin` crea un usuario con `rol: 'admin'` que puede hacer login.
+- [x] En la base de datos la contraseña se guarda hasheada (el valor de `password_hash` es distinto de la contraseña enviada y dos usuarios con la misma contraseña tienen hashes distintos).
+- [x] `POST /auth/registro` con datos inválidos devuelve `400 { errores: [...] }` con todos los errores a la vez (p. ej. `'email no es válido'`, `'password debe tener entre 8 y 128 caracteres'`).
+- [x] `POST /auth/registro` con un email ya registrado (sin distinguir mayúsculas) devuelve `409 { error: 'El email ya está registrado' }`.
+- [x] `POST /auth/login` con credenciales correctas devuelve `200 { token, usuario }`; el token verifica con `JWT_SECRET`, contiene `sub`, `email`, `rol` y caduca a las 24 h (`exp - iat === 86400`).
+- [x] `POST /auth/login` con email inexistente o contraseña incorrecta devuelve `401 { error: 'Credenciales inválidas' }` (mismo mensaje en ambos casos).
+- [x] `POST /auth/login` sin email o sin contraseña devuelve `400 { errores: [...] }`.
+- [x] La API no arranca si no está definido `JWT_SECRET`.
+- [x] `npm test` ejecuta vitest y todos los tests de `tests/auth.test.js` pasan.
+- [x] Las rutas de `/vendehumos` siguen funcionando igual.
 
 ## Dudas y decisiones tomadas
 
