@@ -1,0 +1,21 @@
+plans/1-login-registro-usuarios-jwt.md
+  s_9b57cf8e21c234::t_c7ce6ebd07fc4d 66
+tests/auth.test.js
+  s_9b57cf8e21c234::t_2b560adb771313 111-152
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "0a7f61afff634db3f110f2c4622e166a70260b71",
+  "prompts": {},
+  "sessions": {
+    "s_9b57cf8e21c234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e4c24fb-ffdb-49bc-8546-f728e8aa6ab0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
