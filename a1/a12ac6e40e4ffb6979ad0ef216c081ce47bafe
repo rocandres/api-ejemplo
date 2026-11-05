@@ -1,0 +1,57 @@
+.gitignore
+  s_b4a81455b0214e::t_bff10d15cea32c 1-3
+package-lock.json
+  s_8486fff3343817::t_c3c5f8351a0bbf 1-1218
+src/app.js
+  s_b4a81455b0214e::t_4d671613785a83 1-19
+src/db.js
+  s_b4a81455b0214e::t_553c71d3556752 1-18
+src/models/vendehumo.js
+  s_17f8104bd75a5a::t_377ba0f4cc50f1 1-10
+src/routes/vendehumos.js
+  s_17f8104bd75a5a::t_a5b764f681e278 1-9
+src/utils/validar_vendehumo.js
+  s_17f8104bd75a5a::t_9eb391d451d250 1-31
+.claude/commands/commit.md
+  s_42c45567efe822::t_db7c2114e711a9 1-74
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "a1a12ac6e40e4ffb6979ad0ef216c081ce47bafe",
+  "prompts": {},
+  "sessions": {
+    "s_17f8104bd75a5a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "6aee2305-7045-4e4c-bcfc-920c81d8df73",
+        "model": "unknown"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    },
+    "s_42c45567efe822": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ae64a26b-d8e8-4a22-ab3b-a47a429fb327",
+        "model": "unknown"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    },
+    "s_8486fff3343817": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fffb40d1-f83b-4da8-a569-33ee9c3e2edb",
+        "model": "claude-haiku-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    },
+    "s_b4a81455b0214e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "3b5de814-3d5f-45bf-9b81-0ba6e79ced6e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
