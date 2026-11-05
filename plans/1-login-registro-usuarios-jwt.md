@@ -61,7 +61,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T9.** Implementar `login`: validar, buscar por email, verificar contraseña y devolver `{ token, usuario }` o `no_autorizado` — `src/services/auth_service.js`
 - [x] **T10.** Crear `registro` (400/409/201) y `login` (400/401/200) en el controlador — `src/controllers/auth_controller.js`
 - [x] **T11.** Crear el router y montarlo en `/auth` — `src/routes/auth.js`, `src/app.js`
-- [ ] **T12.** Configurar vitest (`env: { DB_PATH: ':memory:', JWT_SECRET: 'test' }`) — `vitest.config.js`
+- [x] **T12.** Configurar vitest (`env: { DB_PATH: ':memory:', JWT_SECRET: 'test' }`) — `vitest.config.js`
 - [ ] **T13.** Tests de registro: caso feliz con token, rol por defecto, rechazo de `rol: 'admin'`, validaciones de contraseña, email duplicado, la respuesta no contiene contraseña — `tests/auth.test.js`
 - [ ] **T14.** Tests de login: caso feliz (token decodificable con `rol` y `exp - iat = 86400`), contraseña incorrecta, email inexistente — `tests/auth.test.js`
 - [ ] **T15.** Crear `scripts/crear_admin.js` (lee `ADMIN_NOMBRE`, `ADMIN_EMAIL`, `ADMIN_PASSWORD`, reutiliza `hash_password` y el repositorio, falla si faltan variables o el email existe) y el script `crear-admin` — `scripts/crear_admin.js`, `package.json`
