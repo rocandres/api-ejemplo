@@ -108,3 +108,45 @@ describe('POST /auth/registro', () => {
     expect(hash(a.id)).not.toBe(hash(b.id))
   })
 })
+
+describe('POST /auth/login', () => {
+  const login = (datos) => request(app).post('/auth/login').send(datos)
+
+  it('200 con token válido que caduca en 24 h', async () => {
+    const datos = nuevo_usuario({ rol: 'usuario' })
+    await registrar(datos)
+    const res = await login({ email: datos.email, password: datos.password })
+
+    expect(res.status).toBe(200)
+    expect(res.body.usuario).toMatchObject({ email: datos.email, rol: 'usuario' })
+    expect(JSON.stringify(res.body)).not.toMatch(/password/i)
+
+    const payload = jwt.verify(res.body.token, process.env.JWT_SECRET)
+    expect(payload).toMatchObject({ sub: String(res.body.usuario.id), email: datos.email, rol: 'usuario' })
+    expect(payload.exp - payload.iat).toBe(86400)
+  })
+
+  it('401 con contraseña incorrecta', async () => {
+    const datos = nuevo_usuario()
+    await registrar(datos)
+    const res = await login({ email: datos.email, password: 'otra12345' })
+    expect(res.status).toBe(401)
+    expect(res.body).toEqual({ error: 'Credenciales inválidas' })
+  })
+
+  it('401 con email inexistente y el mismo mensaje', async () => {
+    const res = await login({ email: 'nadie@x.com', password: 'secreto123' })
+    expect(res.status).toBe(401)
+    expect(res.body).toEqual({ error: 'Credenciales inválidas' })
+  })
+
+  it('400 sin email o sin contraseña', async () => {
+    const sin_email = await login({ password: 'secreto123' })
+    expect(sin_email.status).toBe(400)
+    expect(sin_email.body.errores).toEqual(['email es obligatorio'])
+
+    const sin_password = await login({ email: 'ana@x.com' })
+    expect(sin_password.status).toBe(400)
+    expect(sin_password.body.errores).toEqual(['password es obligatoria'])
+  })
+})
