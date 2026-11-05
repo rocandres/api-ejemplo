@@ -52,7 +52,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 
 - [x] **T1.** Instalar `jsonwebtoken` y en dev `vitest` y `supertest`; cambiar el script `test` a `vitest run` — `package.json`
 - [x] **T2.** Añadir `ROLES` y la tabla `usuarios` (`id`, `nombre`, `email TEXT NOT NULL UNIQUE`, `password_hash`, `rol` con `CHECK`, `created_at DEFAULT CURRENT_TIMESTAMP`) — `src/db.js`
-- [ ] **T3.** Crear `row_to_usuario` que devuelve `{ id, nombre, email, rol, createdAt }` — `src/models/usuario.js`
+- [x] **T3.** Crear `row_to_usuario` que devuelve `{ id, nombre, email, rol, createdAt }` — `src/models/usuario.js`
 - [ ] **T4.** Crear el repositorio con `create`, `find_by_email`, `find_by_id` — `src/repositories/usuarios_repository.js`
 - [ ] **T5.** Implementar `hash_password` (scrypt con salt aleatorio, guardado como `salt:hash`) y `verificar_password` con `timingSafeEqual` — `src/utils/password.js`
 - [ ] **T6.** Implementar `firmar_token(usuario)` (payload `{ sub, email, rol }`, `expiresIn: '24h'`) y `verificar_token`; lanzar error al cargar si falta `JWT_SECRET` — `src/utils/jwt.js`
