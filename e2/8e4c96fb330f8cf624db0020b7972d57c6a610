@@ -1,0 +1,27 @@
+package.json
+  s_9b57cf8e21c234::t_c8371a55b326bb 10-11
+plans/1-login-registro-usuarios-jwt.md
+  s_9b57cf8e21c234::t_5c31d49d67bde8 67,113
+scripts/crear_admin.js
+  s_9b57cf8e21c234::t_b9e24e15870900 1-25
+src/services/auth_service.js
+  s_9b57cf8e21c234::t_5e025d15367e6a 16,24,26-34,49-58
+tests/crear_admin.test.js
+  s_9b57cf8e21c234::t_8d13f4a4867e74 1-64
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "e28e4c96fb330f8cf624db0020b7972d57c6a610",
+  "prompts": {},
+  "sessions": {
+    "s_9b57cf8e21c234": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "8e4c24fb-ffdb-49bc-8546-f728e8aa6ab0",
+        "model": "claude-opus-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
