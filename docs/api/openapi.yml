@@ -135,6 +135,43 @@ paths:
                 $ref: '#/components/schemas/Error'
               example:
                 error: Credenciales inválidas
+  /vendehumos:
+    get:
+      tags: [Vendehumos]
+      summary: Lista los vendehumos paginados
+      operationId: list_vendehumos
+      security: []
+      parameters:
+        - name: page
+          in: query
+          description: Número de página (entero mayor o igual a 1).
+          schema:
+            type: integer
+            minimum: 1
+            default: 1
+        - name: size
+          in: query
+          description: Elementos por página (entre 1 y 100).
+          schema:
+            type: integer
+            minimum: 1
+            maximum: 100
+            default: 10
+      responses:
+        '200':
+          description: Página de vendehumos con enlaces de navegación
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginaVendehumos'
+        '400':
+          description: Parámetros de paginación inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errores'
+              example:
+                errores: [page debe ser un entero mayor o igual a 1]
 components:
   securitySchemes:
     bearerAuth:
