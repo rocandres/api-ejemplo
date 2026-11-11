@@ -49,21 +49,21 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T9.** Escribir `SKILL.md` (frontmatter con `name` y `description` que se active al crear/modificar rutas, controladores, validaciones, modelos o códigos de estado) con el flujo: revisar `git diff` de `src/`, localizar endpoints afectados, actualizar `openapi.yml`, ejecutar el script, informar de cambios — `.claude/skills/actualizar-docs-api/SKILL.md`
 - [x] **T10.** Añadir en `SKILL.md` la checklist de correspondencia código→spec (rutas en `src/routes`, validaciones en `src/utils/validar_*`, enums `CATEGORIAS`/`ROLES` en `src/db.js`, mensajes de error en controladores, camelCase en payloads) — `.claude/skills/actualizar-docs-api/SKILL.md`
 - [x] **T11.** Actualizar `CLAUDE.md`: referencia a `docs/api/openapi.yml` en la sección Documentación y a la skill/script en Commands — `CLAUDE.md`
-- [ ] **T12.** Probar la skill: cambiar de forma trivial un endpoint (p. ej. añadir un campo), ejecutarla y comprobar que spec y HTML se actualizan; revertir el cambio de prueba — `docs/api/`
+- [x] **T12.** Probar la skill: cambiar de forma trivial un endpoint (p. ej. añadir un campo), ejecutarla y comprobar que spec y HTML se actualizan; revertir el cambio de prueba — `docs/api/`
 
 ## Criterios de aceptación
 
 La tarea se da por terminada cuando se cumplen todos:
 
-- [ ] `docs/api/openapi.yml` existe, es OpenAPI 3.0.x válido y `npx @redocly/cli lint docs/api/openapi.yml` termina sin errores.
-- [ ] Cada endpoint registrado en `src/app.js` y `src/routes/*.js` aparece en el spec con sus parámetros, cuerpo y todas las respuestas reales (200/201/400/401/409).
-- [ ] Los enums del spec coinciden con `CATEGORIAS` y `ROLES` (sin `admin` en el registro) y las reglas de password con `validar_usuario.js`.
-- [ ] `bash .claude/skills/actualizar-docs-api/scripts/generar_docs.sh` genera `docs/api/index.html` y devuelve código 0; con un spec inválido devuelve código distinto de 0 con mensaje en español.
-- [ ] El script funciona desde cualquier directorio de trabajo y falla con mensaje claro si falta `npx` o el spec.
-- [ ] La skill tiene `SKILL.md` con `name` y `description` correctos y referencia al script mediante ruta relativa a la skill.
-- [ ] Al modificar la API, seguir la skill actualiza `openapi.yml` y regenera el HTML (verificado en T12).
-- [ ] `CLAUDE.md` menciona el spec, la skill y el script.
-- [ ] `npm test` sigue pasando (no se toca código de `src/`).
+- [x] `docs/api/openapi.yml` existe, es OpenAPI 3.0.x válido y `npx @redocly/cli lint docs/api/openapi.yml` termina sin errores.
+- [x] Cada endpoint registrado en `src/app.js` y `src/routes/*.js` aparece en el spec con sus parámetros, cuerpo y todas las respuestas reales (200/201/400/401/409).
+- [x] Los enums del spec coinciden con `CATEGORIAS` y `ROLES` (sin `admin` en el registro) y las reglas de password con `validar_usuario.js`.
+- [x] `bash .claude/skills/actualizar-docs-api/scripts/generar_docs.sh` genera `docs/api/index.html` y devuelve código 0; con un spec inválido devuelve código distinto de 0 con mensaje en español.
+- [x] El script funciona desde cualquier directorio de trabajo y falla con mensaje claro si falta `npx` o el spec.
+- [x] La skill tiene `SKILL.md` con `name` y `description` correctos y referencia al script mediante ruta relativa a la skill.
+- [x] Al modificar la API, seguir la skill actualiza `openapi.yml` y regenera el HTML (verificado en T12).
+- [x] `CLAUDE.md` menciona el spec, la skill y el script.
+- [x] `npm test` sigue pasando (no se toca código de `src/`).
 
 ## Dudas y decisiones tomadas
 
@@ -80,3 +80,7 @@ La tarea se da por terminada cuando se cumplen todos:
 - Nombre de la skill `actualizar-docs-api`, en español como el resto de skills del proyecto.
 - El spec y los textos (descripciones, mensajes) se escriben en español, igual que la API.
 - `bearerAuth` se declara pero no se aplica, porque hoy no hay middleware de autenticación.
+- Se añade `docs/api/redocly.yaml` (extiende `recommended`, desactiva `operation-4xx-response` y `no-server-example.com`) y el script lo pasa con `--config` — `/health` no tiene 4xx y el servidor `localhost` es intencionado.
+- Las operaciones públicas llevan `security: []` — la regla `security-defined` de Redocly lo exige mientras `bearerAuth` no se aplique.
+- La rama `2-openapi-docs-skill` se creó desde `1-login-registro-usuarios-jwt`, no desde `development` — `development` no contiene aún el código de auth que el spec documenta.
+- Resueltas las dudas abiertas: `api-pagination.md` se deja en `src/docs/api/`, `index.html` se versiona y la skill vive en `.claude/skills/`.
