@@ -41,7 +41,7 @@ Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 - [x] **T1.** Crear `openapi.yml` con cabecera (`openapi: 3.0.3`, `info`, `servers` en `http://localhost:3000`, `tags`: Salud, Auth, Vendehumos) y `GET /health` — `docs/api/openapi.yml`
 - [x] **T2.** Añadir los esquemas de `components`: `Usuario`, `Vendehumo` (enum de categorías), `PaginaVendehumos` (`self/first/prev/next/last/items`), `Errores`, `Error` y `securitySchemes.bearerAuth` — `docs/api/openapi.yml`
 - [x] **T3.** Documentar `POST /auth/registro`: cuerpo (nombre, email, password 8–128 con letra y número, `rol` solo `usuario-free`/`usuario`), respuestas 201 `{token, usuario}`, 400 `{errores}`, 409 `{error}` — `docs/api/openapi.yml`
-- [ ] **T4.** Documentar `POST /auth/login`: respuestas 200, 400 y 401 `Credenciales inválidas` — `docs/api/openapi.yml`
+- [x] **T4.** Documentar `POST /auth/login`: respuestas 200, 400 y 401 `Credenciales inválidas` — `docs/api/openapi.yml`
 - [ ] **T5.** Documentar `GET /vendehumos` con parámetros `page` (≥1, def. 1) y `size` (1–100, def. 10), respuestas 200 `PaginaVendehumos` y 400 — `docs/api/openapi.yml`
 - [ ] **T6.** Documentar `POST /vendehumos` (nombre, urlFoto URL válida, categoria enum, descripcion) con 201 `Vendehumo` y 400; añadir ejemplos en los payloads — `docs/api/openapi.yml`
 - [ ] **T7.** Escribir `generar_docs.sh`: `set -euo pipefail`, resolver la raíz del repo, comprobar que existen `npx` y el spec, ejecutar `npx --yes @redocly/cli lint` y luego `build-docs` con salida en `docs/api/index.html`; aceptar rutas opcionales por argumento — `.claude/skills/actualizar-docs-api/scripts/generar_docs.sh`

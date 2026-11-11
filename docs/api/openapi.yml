@@ -93,6 +93,48 @@ paths:
                 $ref: '#/components/schemas/Error'
               example:
                 error: El email ya está registrado
+  /auth/login:
+    post:
+      tags: [Auth]
+      summary: Inicia sesión y devuelve un token JWT
+      operationId: login
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [email, password]
+              properties:
+                email:
+                  type: string
+                  format: email
+                  example: ana@example.com
+                password:
+                  type: string
+                  example: secreta123
+      responses:
+        '200':
+          description: Login correcto
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RespuestaAuth'
+        '400':
+          description: Faltan email o password
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errores'
+        '401':
+          description: Credenciales inválidas (mismo mensaje para email o contraseña incorrectos)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: Credenciales inválidas
 components:
   securitySchemes:
     bearerAuth:
