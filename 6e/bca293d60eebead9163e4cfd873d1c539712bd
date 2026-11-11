@@ -1,0 +1,19 @@
+.mcp.json
+  s_1e28a5b7d76b5c::t_6b8387b772c8d2 1-19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "6ebca293d60eebead9163e4cfd873d1c539712bd",
+  "prompts": {},
+  "sessions": {
+    "s_1e28a5b7d76b5c": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "61d5ad4b-1f34-4c04-9779-19524553542b",
+        "model": "unknown"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
