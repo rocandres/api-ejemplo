@@ -1,0 +1,23 @@
+docs/api/openapi.yml
+  s_cb2a655b97a05f::t_4af0d32ad76385 1-41
+docs/api/redocly.yaml
+  s_cb2a655b97a05f::t_56970b2f1d47fe 1-7
+plans/2-openapi-docs-skill.md
+  s_cb2a655b97a05f::t_a11ad8e26e5738 1-82
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "7ab940158eac72d36b95ce3e8568c4d6a4cd68d9",
+  "prompts": {},
+  "sessions": {
+    "s_cb2a655b97a05f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d1a237d-d0a2-4b5b-94a5-ccdde7914f6e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
