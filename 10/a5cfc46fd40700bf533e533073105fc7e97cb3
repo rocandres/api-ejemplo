@@ -1,0 +1,21 @@
+.claude/skills/actualizar-docs-api/scripts/generar_docs.sh
+  s_cb2a655b97a05f::t_3d8f9653ef3023 1-34
+plans/2-openapi-docs-skill.md
+  s_cb2a655b97a05f::t_5b733f7933957a 47
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "10a5cfc46fd40700bf533e533073105fc7e97cb3",
+  "prompts": {},
+  "sessions": {
+    "s_cb2a655b97a05f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d1a237d-d0a2-4b5b-94a5-ccdde7914f6e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
