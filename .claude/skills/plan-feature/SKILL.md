@@ -39,3 +39,11 @@ Pautas por sección:
 ### 4. Responde al usuario
 
 Muestra la ruta del archivo creado, un resumen de 2-3 líneas y, sobre todo, las **dudas abiertas**, para que pueda contestarlas antes de implementar. No empieces a implementar salvo que te lo pidan.
+
+### 5. Notifica en Slack
+
+Como último paso, avisa al equipo en el canal de Slack **`curso-claude-ed3`** de que la tarea ya está planificada:
+
+1. Envía el mensaje con la herramienta `mcp__slack__slack_post_message` (si es una herramienta diferida, cárgala antes con ToolSearch). El ID del canal es `C0CGZ01R9M2`: úsalo directamente, sin consultar la lista de canales.
+2. Contenido del mensaje (en español, breve): el número de issue, el título o descripción y la ruta del plan. Por ejemplo: `📝 Planificada la issue #1: login y registro con JWT. Plan en plans/1-login-registro-usuarios-jwt.md.`
+3. Si Slack no está disponible o falla el envío, no abortes: menciónalo al usuario en tu respuesta. No menciones en el mensaje datos personales del usuario.

@@ -74,3 +74,11 @@ Cuando todas las tareas estén marcadas:
 1. Ejecuta la suite completa (`npm test`).
 2. Repasa los **Criterios de aceptación** uno a uno; marca con `- [x]` los que se cumplen (comprobándolos, no suponiéndolo) y haz un último commit con `/commit` si cambió el plan.
 3. Informa al usuario: rama creada, número de commits (`git log --oneline development..HEAD`), estado de los tests, criterios que no se hayan podido verificar y cualquier decisión tomada por el camino. No hagas merge ni push salvo que te lo pidan.
+
+## 5. Notifica en Slack
+
+Como último paso, avisa al equipo en el canal de Slack **`curso-claude-ed3`** de que el plan ya está implementado:
+
+1. Envía el mensaje con la herramienta `mcp__slack__slack_post_message` (si es una herramienta diferida, cárgala antes con ToolSearch). El ID del canal es `C0CGZ01R9M2`: úsalo directamente, sin consultar la lista de canales.
+2. Contenido del mensaje (en español, breve): el nombre del plan/issue, la rama creada, el número de commits y el estado de los tests. Por ejemplo: `✅ Implementado el plan 1-login-registro-usuarios-jwt (rama 1-login-registro-usuarios-jwt, 9 commits, tests en verde).`
+3. Si Slack no está disponible o falla el envío, no abortes: dilo al usuario en el informe final. Envía el mensaje solo cuando el plan esté realmente completado (todas las tareas hechas y suite en verde); si te quedas a medias, no lo envíes.
