@@ -39,7 +39,7 @@ Documentar la API actual en `docs/api/openapi.yml` (OpenAPI 3.0) y crear una ski
 Cada tarea dura entre 5 y 10 minutos y deja el código en un estado coherente.
 
 - [x] **T1.** Crear `openapi.yml` con cabecera (`openapi: 3.0.3`, `info`, `servers` en `http://localhost:3000`, `tags`: Salud, Auth, Vendehumos) y `GET /health` — `docs/api/openapi.yml`
-- [ ] **T2.** Añadir los esquemas de `components`: `Usuario`, `Vendehumo` (enum de categorías), `PaginaVendehumos` (`self/first/prev/next/last/items`), `Errores`, `Error` y `securitySchemes.bearerAuth` — `docs/api/openapi.yml`
+- [x] **T2.** Añadir los esquemas de `components`: `Usuario`, `Vendehumo` (enum de categorías), `PaginaVendehumos` (`self/first/prev/next/last/items`), `Errores`, `Error` y `securitySchemes.bearerAuth` — `docs/api/openapi.yml`
 - [ ] **T3.** Documentar `POST /auth/registro`: cuerpo (nombre, email, password 8–128 con letra y número, `rol` solo `usuario-free`/`usuario`), respuestas 201 `{token, usuario}`, 400 `{errores}`, 409 `{error}` — `docs/api/openapi.yml`
 - [ ] **T4.** Documentar `POST /auth/login`: respuestas 200, 400 y 401 `Credenciales inválidas` — `docs/api/openapi.yml`
 - [ ] **T5.** Documentar `GET /vendehumos` con parámetros `page` (≥1, def. 1) y `size` (1–100, def. 10), respuestas 200 `PaginaVendehumos` y 400 — `docs/api/openapi.yml`

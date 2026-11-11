@@ -39,3 +39,106 @@ paths:
                       ok:
                         type: boolean
                         example: true
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+      description: Token JWT devuelto por /auth/registro y /auth/login (caduca a las 24 h). Declarado para uso futuro; ningún endpoint lo exige todavía.
+  schemas:
+    Usuario:
+      type: object
+      required: [id, nombre, email, rol, createdAt]
+      properties:
+        id:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: Ana
+        email:
+          type: string
+          format: email
+          example: ana@example.com
+        rol:
+          type: string
+          enum: [admin, usuario-free, usuario]
+          example: usuario-free
+        createdAt:
+          type: string
+          example: '2026-11-11 10:00:00'
+    Vendehumo:
+      type: object
+      required: [id, nombre, urlFoto, categoria, descripcion, numeroVotos]
+      properties:
+        id:
+          type: integer
+          example: 1
+        nombre:
+          type: string
+          example: Curso milagro
+        urlFoto:
+          type: string
+          format: uri
+          example: https://example.com/foto.jpg
+        categoria:
+          type: string
+          enum: [TECNOLOGIA, FINANZAS, SALUD, MARKETING, COACHING, OTROS]
+          example: COACHING
+        descripcion:
+          type: string
+          example: Hazte rico en 3 días
+        numeroVotos:
+          type: integer
+          example: 0
+    PaginaVendehumos:
+      type: object
+      required: [self, first, last, items]
+      properties:
+        self:
+          type: string
+          example: /vendehumos?page=2&size=10
+        first:
+          type: string
+          example: /vendehumos?page=1&size=10
+        prev:
+          type: string
+          description: Solo si no es la primera página.
+          example: /vendehumos?page=1&size=10
+        next:
+          type: string
+          description: Solo si no es la última página.
+          example: /vendehumos?page=3&size=10
+        last:
+          type: string
+          example: /vendehumos?page=3&size=10
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/Vendehumo'
+    RespuestaAuth:
+      type: object
+      required: [token, usuario]
+      properties:
+        token:
+          type: string
+          description: JWT con payload { sub, email, rol }.
+        usuario:
+          $ref: '#/components/schemas/Usuario'
+    Errores:
+      type: object
+      required: [errores]
+      properties:
+        errores:
+          type: array
+          items:
+            type: string
+          example: [nombre es obligatorio]
+    Error:
+      type: object
+      required: [error]
+      properties:
+        error:
+          type: string
+          example: Credenciales inválidas
