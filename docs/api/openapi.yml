@@ -1,0 +1,41 @@
+openapi: 3.0.3
+info:
+  title: API Vendehumos
+  description: API para registrar y consultar vendehumos, con registro y login de usuarios mediante JWT.
+  version: 1.0.0
+  license:
+    name: ISC
+    url: https://opensource.org/licenses/ISC
+servers:
+  - url: http://localhost:3000
+    description: Servidor local
+tags:
+  - name: Salud
+    description: Estado de la API
+  - name: Auth
+    description: Registro y login de usuarios
+  - name: Vendehumos
+    description: Gestión de vendehumos
+paths:
+  /health:
+    get:
+      tags: [Salud]
+      summary: Comprueba que la API está levantada
+      operationId: health
+      security: []
+      responses:
+        '200':
+          description: La API funciona correctamente
+          content:
+            application/json:
+              schema:
+                type: object
+                required: [status]
+                properties:
+                  status:
+                    type: object
+                    required: [ok]
+                    properties:
+                      ok:
+                        type: boolean
+                        example: true

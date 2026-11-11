@@ -1,0 +1,7 @@
+extends:
+  - recommended
+rules:
+  # /health es un endpoint de salud y no tiene respuestas 4xx
+  operation-4xx-response: off
+  # El servidor local de desarrollo es intencionado
+  no-server-example.com: off
