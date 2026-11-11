@@ -39,6 +39,60 @@ paths:
                       ok:
                         type: boolean
                         example: true
+  /auth/registro:
+    post:
+      tags: [Auth]
+      summary: Registra un usuario y devuelve su token
+      operationId: registro
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [nombre, email, password]
+              properties:
+                nombre:
+                  type: string
+                  example: Ana
+                email:
+                  type: string
+                  format: email
+                  description: Se recorta y se guarda en minúsculas.
+                  example: ana@example.com
+                password:
+                  type: string
+                  minLength: 8
+                  maxLength: 128
+                  description: Debe contener al menos una letra y un número.
+                  example: secreta123
+                rol:
+                  type: string
+                  enum: [usuario-free, usuario]
+                  default: usuario-free
+                  description: '`admin` no se admite en el registro público.'
+      responses:
+        '201':
+          description: Usuario creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RespuestaAuth'
+        '400':
+          description: Datos inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errores'
+        '409':
+          description: El email ya está registrado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: El email ya está registrado
 components:
   securitySchemes:
     bearerAuth:
