@@ -1,0 +1,21 @@
+plans/2-openapi-docs-skill.md
+  s_cb2a655b97a05f::t_1a6e9188faafac 49-50
+.claude/skills/actualizar-docs-api/SKILL.md
+  s_cb2a655b97a05f::t_4fd78945e7e43d 1-46
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "79737db34432266c21cc0f728e43b273a29a1187",
+  "prompts": {},
+  "sessions": {
+    "s_cb2a655b97a05f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "1d1a237d-d0a2-4b5b-94a5-ccdde7914f6e",
+        "model": "claude-sonnet-5-5"
+      },
+      "human_author": "rocandres <arodriguezcabanzo@gmail.com>"
+    }
+  }
+}
