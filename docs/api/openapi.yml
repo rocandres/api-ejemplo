@@ -172,6 +172,48 @@ paths:
                 $ref: '#/components/schemas/Errores'
               example:
                 errores: [page debe ser un entero mayor o igual a 1]
+    post:
+      tags: [Vendehumos]
+      summary: Crea un vendehumo
+      operationId: create_vendehumo
+      security: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required: [nombre, urlFoto, categoria, descripcion]
+              properties:
+                nombre:
+                  type: string
+                  example: Curso milagro
+                urlFoto:
+                  type: string
+                  format: uri
+                  example: https://example.com/foto.jpg
+                categoria:
+                  type: string
+                  enum: [TECNOLOGIA, FINANZAS, SALUD, MARKETING, COACHING, OTROS]
+                  example: COACHING
+                descripcion:
+                  type: string
+                  example: Hazte rico en 3 días
+      responses:
+        '201':
+          description: Vendehumo creado
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Vendehumo'
+        '400':
+          description: Datos inválidos
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Errores'
+              example:
+                errores: [nombre es obligatorio, urlFoto no es una URL válida]
 components:
   securitySchemes:
     bearerAuth:
