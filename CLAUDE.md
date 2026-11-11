@@ -6,12 +6,15 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 - `docs`
 -- `api`
 --- `api-pagination.md`: lee este archivo cuando te pidad aplicar paginacion en los endpoint de get.
+--- `openapi.yml`: especificación OpenAPI de la API (fuente de verdad de la documentación). `index.html` es la versión HTML generada con Redocly; no se edita a mano.
+- Cada vez que cambie la API (rutas, validaciones, respuestas, enums), usa la skill `actualizar-docs-api` para actualizar `docs/api/openapi.yml` y regenerar el HTML.
 
 ## Commands
 
 - `npm start` — run the API (`node src/server.js`, port `PORT` env or 3000). Requires `JWT_SECRET`: the app refuses to start without it.
 - `npm run dev` — run with nodemon (auto-reload). Also requires `JWT_SECRET`.
 - `npm test` — run vitest (`vitest run`). `vitest.config.js` sets `DB_PATH=':memory:'` and `JWT_SECRET='test'`. Single file/test: `npx vitest run tests/auth.test.js -t "nombre"`.
+- `bash .claude/skills/actualizar-docs-api/scripts/generar_docs.sh` — valida `docs/api/openapi.yml` con Redocly y genera `docs/api/index.html` (requiere Node/`npx` y red la primera vez).
 - `ADMIN_NOMBRE=... ADMIN_EMAIL=... ADMIN_PASSWORD=... npm run crear-admin` — create an `admin` user (public registration cannot). Fails if a variable is missing, the data is invalid or the email exists.
 
 ## Environment variables
